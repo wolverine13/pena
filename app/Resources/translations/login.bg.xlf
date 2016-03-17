@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+                <trans-unit id="1">
+                    <source>Password</source>
+                    <target>Парола</target>
+                </trans-unit>
+                <trans-unit id="2">
+                    <source>Username</source>
+                    <target>Потребителско име</target>
+                </trans-unit>
+                <trans-unit id="3">
+                    <source>login</source>
+                    <target>Вход</target>
+                </trans-unit>
+                <trans-unit id="4">
+                    <source>Local language</source>
+                    <target>Местен език</target>
+                </trans-unit>
+                <trans-unit id="5">
+                    <source>Home</source>
+                    <target>Главна Страница</target>
+                </trans-unit>
+                <trans-unit id="6">
+                    <source>Assign Key</source>
+                    <target>Зачисли ключ</target>
+                </trans-unit>
+                <trans-unit id="7">
+                    <source>Return Key</source>
+                    <target>Върни ключ</target>
+                </trans-unit>
+                <trans-unit id="8">
+                    <source>Admin tools</source>
+                    <target>Админ инструменти</target>
+                </trans-unit>
+                <trans-unit id="9">
+                    <source>search</source>
+                    <target>търси</target>
+                </trans-unit>
+                <trans-unit id="10">
+                    <source>logout</source>
+                    <target>отпиши</target>
+                </trans-unit>
+
+
+
+
+
+        </body>
+    </file>
+</xliff>

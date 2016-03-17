@@ -1,0 +1,45 @@
+<?php
+
+
+namespace AppBundle\Entity;
+
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="assingKey")
+ */
+
+class assingKeys
+{
+    /**
+     * @ORM\Column(name="userid",type="integer")
+     * @ORM\Id
+     */
+    private $userId;
+    /**
+     * @ORM\Column(name="keyId",type="integer")
+     * @ORM\Id
+     *  * @ORM\ManyToOne(targetEntity="Key",inversedBy="id")
+     * @ORM\JoinColumn(name="keyId",referencedColumnName="id")
+     */
+    private $keyId;
+    /**
+     * @ORM\Column(name="assignDate",type="datetime", nullable=false)
+     */
+    private $assignDate;
+    /**
+     * @ORM\Column(name="returnDate",type="datetime", nullable=true)
+     */
+    private $returnDate;
+    /**
+     * @ORM\Column(name="operatorId",type="integer")
+     */
+    private $operatorId;
+    /**
+     * @ORM\Column(name="status",type="integer",length=1)
+     */
+    private $keyStatus;
+    // 0 - Assigned 1 - Lost
+}

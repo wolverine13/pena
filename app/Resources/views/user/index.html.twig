@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Admin panel {{ app.user.username }} {{ app.user.role.name }}</h1>
+<a href="/logout" style="float:right">logout</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Givename</th>
+                <th>Surname</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Storeid</th>
+                <th>Created</th>
+                <th>Createdby</th>
+                <th>Umodby</th>
+                <th>Moddate</th>
+                <th>Isactive</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td><a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                <td>{{ user.givenName }}</td>
+                <td>{{ user.surName }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{  user.role.name }}</td>
+                <td>{{ user.storeId }}</td>
+                <td>{% if user.created %}{{ user.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ user.createdBy }}</td>
+                <td>{{ user.uModBy }}</td>
+                <td>{% if user.modDate %}{{ user.modDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if user.isActive %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('user_show', { 'id': user.id }) }}">show</a>
+                        </li>
+                        {% if app.user.role.id == 2  and user.role.id !=1 or app.user.role.id ==1 %}
+                        <li>
+
+                            <a href="{{ path('user_edit', { 'id': user.id }) }}">edit</a>
+
+                        </li>
+                        {% endif %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('user_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

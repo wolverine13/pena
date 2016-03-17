@@ -1,0 +1,43 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: wolverine13
+ * Date: 22.02.16
+ * Time: 12:57
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Tests\Fixtures\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="KeyStatus")
+ */
+
+class KeyStatus
+{
+    /**
+     * @ORM\Column(type="integer",length=1)
+     * @ORM\Id
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string",length=25)
+     */
+
+    private $status;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Key", mappedBy="keyStatus")
+     */
+    protected $keys;
+
+    public function __construct()
+    {
+        $this->keys = new ArrayCollection();
+    }
+}

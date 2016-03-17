@@ -1,0 +1,56 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    #access_deny_url: /fool/error403
+    encoders:
+            AppBundle\Entity\User:
+                 algorithm: bcrypt
+    providers:
+            our_db_provider:
+                 entity:
+                       class: AppBundle:User
+                       property: username
+    role_hierarchy:
+            ROLE_GL_ADMIN: [ROLE_ADMIN,ROLE_USER]
+            ROLE_ADMIN: [ROLE_USER]
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    #providers:
+    #    in_memory:
+    #        memory: ~
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        #dev:
+        #    pattern: ^/(_(profiler|wdt)|css|images|js)/
+        #    security: false
+
+        main:
+            anonymous: ~
+            #pattern:  /
+            #http_basic: ~
+            #pattern: ^/
+            #prefix: /{_locale}
+            form_login:
+                   login_path: /login
+                   check_path: /login_check
+                   csrf_token_generator: security.csrf.token_manager
+                   default_target_path: /usr
+                   #target_path_parameter: redirect_url
+            provider: our_db_provider
+            logout:
+                  path: /logout
+                  target: /en
+
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+
+    access_control:
+            #require role_admin to access /admin
+            #- {path: ^/user, roles: ROLE_ADMIN  }
+            #- {path: ^/register, roles: ROLE_ADMIN }

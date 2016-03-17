@@ -1,0 +1,22 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+    #prefix: /{_locale}
+    #  requirements:
+     #   _locale: bg|fr|en|de
+    #  defaults: { _locale: bg}
+logout:
+  path: /logout
+
+account:
+  path: /{_locale}/usr
+  #defaults: { _locale: bg}
+  defaults: { _controller: AppBundle:Home:register, _locale: bg }
+  requirements:
+      _locale: bg|fr|en|de
+
+login:
+  path: /{_locale}/login
+  defaults: { _controller: AppBundle:Security:login, _locale: bg }
+  requirements:
+      _locale: bg|fr|en|de
